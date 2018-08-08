@@ -1,0 +1,168 @@
+[
+    {
+        "id": "c5b2dbb7.9e2e98",
+        "type": "tab",
+        "label": "ANALOG INPUT TEST",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "cb5e7c10.beb45",
+        "type": "inject",
+        "z": "c5b2dbb7.9e2e98",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 152.39052963256836,
+        "y": 293.4206352233887,
+        "wires": [
+            [
+                "e810d047.98409",
+                "71af6a22.42af64",
+                "880ace38.a017a",
+                "7a1acd39.6ea694"
+            ]
+        ]
+    },
+    {
+        "id": "98e403c9.2aae3",
+        "type": "debug",
+        "z": "c5b2dbb7.9e2e98",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 909.8260269165039,
+        "y": 279.30819261074066,
+        "wires": []
+    },
+    {
+        "id": "e810d047.98409",
+        "type": "exec",
+        "z": "c5b2dbb7.9e2e98",
+        "command": "python /home/pi/single_mcp3004_read.py",
+        "addpay": false,
+        "append": "0",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 476.01155853271484,
+        "y": 181.02776718139648,
+        "wires": [
+            [
+                "bc59bf6b.fedbc"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "71af6a22.42af64",
+        "type": "exec",
+        "z": "c5b2dbb7.9e2e98",
+        "command": "python /home/pi/single_mcp3004_read.py",
+        "addpay": false,
+        "append": "1",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 475.0115661621094,
+        "y": 255.02776336669922,
+        "wires": [
+            [
+                "bc59bf6b.fedbc"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "880ace38.a017a",
+        "type": "exec",
+        "z": "c5b2dbb7.9e2e98",
+        "command": "python /home/pi/single_mcp3004_read.py",
+        "addpay": false,
+        "append": "2",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 475.0115661621094,
+        "y": 327.0277519226074,
+        "wires": [
+            [
+                "bc59bf6b.fedbc"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "7a1acd39.6ea694",
+        "type": "exec",
+        "z": "c5b2dbb7.9e2e98",
+        "command": "python /home/pi/single_mcp3004_read.py",
+        "addpay": false,
+        "append": "3",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 472.0115661621094,
+        "y": 395.02777099609375,
+        "wires": [
+            [
+                "bc59bf6b.fedbc"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "bc59bf6b.fedbc",
+        "type": "join",
+        "z": "c5b2dbb7.9e2e98",
+        "name": "",
+        "mode": "custom",
+        "build": "string",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": " | ",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "4",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 758.8168029785156,
+        "y": 280.4858226776123,
+        "wires": [
+            [
+                "98e403c9.2aae3"
+            ]
+        ]
+    },
+    {
+        "id": "371eadd3.825412",
+        "type": "comment",
+        "z": "c5b2dbb7.9e2e98",
+        "name": "Prerequisites",
+        "info": "You'll need to download single_mcp3004_read.py\nFind it here: https://github.com/MatterOfTechnologies/PiLC/tree/master/Useful%20Code/Python\n\nAlso, enable SPI on your Pi",
+        "x": 151.79234313964844,
+        "y": 239.31216716766357,
+        "wires": []
+    }
+]

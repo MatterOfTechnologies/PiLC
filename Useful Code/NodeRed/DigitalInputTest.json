@@ -1,0 +1,287 @@
+[
+    {
+        "id": "fb55a5a7.797798",
+        "type": "tab",
+        "label": "DIGITAL INPUT TEST",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "6aef1e50.ca85",
+        "type": "rpi-gpio in",
+        "z": "fb55a5a7.797798",
+        "name": "",
+        "pin": "26",
+        "intype": "up",
+        "debounce": "25",
+        "read": false,
+        "x": 232.24538803100586,
+        "y": 124.72223091125488,
+        "wires": [
+            [
+                "738233f3.2f928c"
+            ]
+        ]
+    },
+    {
+        "id": "6ed443eb.89377c",
+        "type": "rpi-gpio in",
+        "z": "fb55a5a7.797798",
+        "name": "",
+        "pin": "7",
+        "intype": "up",
+        "debounce": "25",
+        "read": false,
+        "x": 223.0115623474121,
+        "y": 174.02776622772217,
+        "wires": [
+            [
+                "5709484.31415b8"
+            ]
+        ]
+    },
+    {
+        "id": "71de457c.fa608c",
+        "type": "rpi-gpio in",
+        "z": "fb55a5a7.797798",
+        "name": "",
+        "pin": "22",
+        "intype": "up",
+        "debounce": "25",
+        "read": false,
+        "x": 231.01156616210938,
+        "y": 226.02777099609375,
+        "wires": [
+            [
+                "d1f9c74.114d038"
+            ]
+        ]
+    },
+    {
+        "id": "1ae88dd3.ebe7a2",
+        "type": "rpi-gpio in",
+        "z": "fb55a5a7.797798",
+        "name": "",
+        "pin": "18",
+        "intype": "up",
+        "debounce": "25",
+        "read": false,
+        "x": 232.01156616210938,
+        "y": 278.0277519226074,
+        "wires": [
+            [
+                "75879181.efde3"
+            ]
+        ]
+    },
+    {
+        "id": "af90740f.8f80d8",
+        "type": "rpi-gpio in",
+        "z": "fb55a5a7.797798",
+        "name": "",
+        "pin": "36",
+        "intype": "up",
+        "debounce": "25",
+        "read": false,
+        "x": 229.01156616210938,
+        "y": 325.02777099609375,
+        "wires": [
+            [
+                "3ae81e64.6372f2"
+            ]
+        ]
+    },
+    {
+        "id": "6560b7c9.d59e78",
+        "type": "rpi-gpio in",
+        "z": "fb55a5a7.797798",
+        "name": "",
+        "pin": "35",
+        "intype": "up",
+        "debounce": "25",
+        "read": false,
+        "x": 230.01156997680664,
+        "y": 374.0277614593506,
+        "wires": [
+            [
+                "a243843d.7e7a38"
+            ]
+        ]
+    },
+    {
+        "id": "738233f3.2f928c",
+        "type": "change",
+        "z": "fb55a5a7.797798",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 400.2500228881836,
+        "y": 125.16203498840332,
+        "wires": [
+            [
+                "4f39ed62.f5d794"
+            ]
+        ]
+    },
+    {
+        "id": "5709484.31415b8",
+        "type": "change",
+        "z": "fb55a5a7.797798",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "2",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 400.0115661621094,
+        "y": 174.02777099609375,
+        "wires": [
+            [
+                "4f39ed62.f5d794"
+            ]
+        ]
+    },
+    {
+        "id": "d1f9c74.114d038",
+        "type": "change",
+        "z": "fb55a5a7.797798",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "3",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 397.0115661621094,
+        "y": 226.02777099609375,
+        "wires": [
+            [
+                "4f39ed62.f5d794"
+            ]
+        ]
+    },
+    {
+        "id": "75879181.efde3",
+        "type": "change",
+        "z": "fb55a5a7.797798",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "4",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 396.0115661621094,
+        "y": 278.02777099609375,
+        "wires": [
+            [
+                "4f39ed62.f5d794"
+            ]
+        ]
+    },
+    {
+        "id": "3ae81e64.6372f2",
+        "type": "change",
+        "z": "fb55a5a7.797798",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "5",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 395.0115661621094,
+        "y": 325.02777099609375,
+        "wires": [
+            [
+                "4f39ed62.f5d794"
+            ]
+        ]
+    },
+    {
+        "id": "a243843d.7e7a38",
+        "type": "change",
+        "z": "fb55a5a7.797798",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "6",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 396.0115661621094,
+        "y": 373.02777099609375,
+        "wires": [
+            [
+                "4f39ed62.f5d794"
+            ]
+        ]
+    },
+    {
+        "id": "4f39ed62.f5d794",
+        "type": "debug",
+        "z": "fb55a5a7.797798",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 663.2499389648438,
+        "y": 250.0972137451172,
+        "wires": []
+    }
+]

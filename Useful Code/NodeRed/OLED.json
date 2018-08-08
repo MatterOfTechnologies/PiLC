@@ -1,0 +1,90 @@
+[
+    {
+        "id": "e512f438.607e08",
+        "type": "tab",
+        "label": "OLED",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "56e53306.a56f7c",
+        "type": "String",
+        "z": "e512f438.607e08",
+        "name": "",
+        "display": "60cfa404.77cadc",
+        "x": 465.87358474731445,
+        "y": 132.46823120117188,
+        "wires": []
+    },
+    {
+        "id": "73416a00.b6e604",
+        "type": "function",
+        "z": "e512f438.607e08",
+        "name": "",
+        "func": "var newmsg = msg;\nvar temp = msg.payload;\nnewmsg.payload = {};\nnewmsg.payload.x = 1;\nnewmsg.payload.y = 1;\nnewmsg.payload.size = 2;\nnewmsg.payload.text = temp.trim();\nreturn newmsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 324.73081970214844,
+        "y": 132.65872383117676,
+        "wires": [
+            [
+                "56e53306.a56f7c"
+            ]
+        ]
+    },
+    {
+        "id": "51095a7e.fc8204",
+        "type": "link in",
+        "z": "e512f438.607e08",
+        "name": "",
+        "links": [
+            "48a645c5.c5cecc"
+        ],
+        "x": 224.64946174621582,
+        "y": 133.3201084136963,
+        "wires": [
+            [
+                "73416a00.b6e604"
+            ]
+        ]
+    },
+    {
+        "id": "8a7898e6.3e1de8",
+        "type": "comment",
+        "z": "e512f438.607e08",
+        "name": "Prerequisites",
+        "info": "Make sure you have the OLED library",
+        "x": 286.0780563354492,
+        "y": 76.45502376556396,
+        "wires": []
+    },
+    {
+        "id": "766ed145.86ca2",
+        "type": "comment",
+        "z": "e512f438.607e08",
+        "name": "OLED Configuration",
+        "info": "I was having trouble getting the OLED to light up until I changed the bus to 3C\nAlso, make sure that you have I2C enabled. Use raspi-config from command line",
+        "x": 503.21759033203125,
+        "y": 76.448410987854,
+        "wires": []
+    },
+    {
+        "id": "2aec69af.40ea36",
+        "type": "comment",
+        "z": "e512f438.607e08",
+        "name": "Function",
+        "info": "The function adds all of the extra fields to msg.payload to get the OLED node to work",
+        "x": 333.2077026367187,
+        "y": 193.5912649972098,
+        "wires": []
+    },
+    {
+        "id": "60cfa404.77cadc",
+        "type": "oled-config",
+        "z": "",
+        "name": "",
+        "width": "128",
+        "height": "32",
+        "address": "3C"
+    }
+]

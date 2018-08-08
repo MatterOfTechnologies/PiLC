@@ -1,0 +1,297 @@
+[
+    {
+        "id": "437f7724.3158f8",
+        "type": "tab",
+        "label": "CPU TEMPERATURE",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "2b82f591.c2923a",
+        "type": "inject",
+        "z": "437f7724.3158f8",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "1.5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 126.85713958740234,
+        "y": 191.9999589920044,
+        "wires": [
+            [
+                "8363df95.13ba6"
+            ]
+        ]
+    },
+    {
+        "id": "8363df95.13ba6",
+        "type": "exec",
+        "z": "437f7724.3158f8",
+        "command": "/opt/vc/bin/vcgencmd measure_temp",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 323.1667022705078,
+        "y": 302.976167678833,
+        "wires": [
+            [
+                "f4a27773.a35228",
+                "48a645c5.c5cecc"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "f4a27773.a35228",
+        "type": "function",
+        "z": "437f7724.3158f8",
+        "name": "",
+        "func": "var raw_temp = msg.payload;\n\nvar str_start = raw_temp.indexOf('=') + 1;\nvar temp = parseFloat(raw_temp.slice(str_start, str_start + 4));\nmsg.payload = temp;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 521.4523811340332,
+        "y": 167.90478324890137,
+        "wires": [
+            [
+                "7909f620.9cc758",
+                "fedef320.ef0b4"
+            ]
+        ]
+    },
+    {
+        "id": "7909f620.9cc758",
+        "type": "switch",
+        "z": "437f7724.3158f8",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lt",
+                "v": "37",
+                "vt": "num"
+            },
+            {
+                "t": "gte",
+                "v": "45",
+                "vt": "num"
+            },
+            {
+                "t": "gt",
+                "v": "55",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 713.7381057739258,
+        "y": 176.42856979370117,
+        "wires": [
+            [
+                "63e56dc.9338994"
+            ],
+            [
+                "707fbe3e.280b7"
+            ],
+            [
+                "b77a6b4.1c89798"
+            ]
+        ]
+    },
+    {
+        "id": "63e56dc.9338994",
+        "type": "change",
+        "z": "437f7724.3158f8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 894.0237655639648,
+        "y": 147.57143878936768,
+        "wires": [
+            [
+                "50f674b2.47aacc"
+            ]
+        ]
+    },
+    {
+        "id": "707fbe3e.280b7",
+        "type": "change",
+        "z": "437f7724.3158f8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 893.8808441162109,
+        "y": 189.00000762939453,
+        "wires": [
+            [
+                "50f674b2.47aacc"
+            ]
+        ]
+    },
+    {
+        "id": "50f674b2.47aacc",
+        "type": "rpi-gpio out",
+        "z": "437f7724.3158f8",
+        "name": "",
+        "pin": "37",
+        "set": false,
+        "level": "0",
+        "freq": "100",
+        "out": "out",
+        "x": 1098.0237731933594,
+        "y": 118.90477848052979,
+        "wires": []
+    },
+    {
+        "id": "fedef320.ef0b4",
+        "type": "ui_gauge",
+        "z": "437f7724.3158f8",
+        "name": "",
+        "group": "b81072c1.18fef",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "gauge",
+        "label": "Celsius",
+        "format": "{{value}}",
+        "min": "35",
+        "max": "55",
+        "colors": [
+            "#0a56ab",
+            "#e4d336",
+            "#e12920"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 725.1666107177734,
+        "y": 243.7143611907959,
+        "wires": []
+    },
+    {
+        "id": "76bf4ca2.13a854",
+        "type": "ui_button",
+        "z": "437f7724.3158f8",
+        "name": "",
+        "group": "b81072c1.18fef",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Turn Fan On",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "num",
+        "topic": "",
+        "x": 112.4522705078125,
+        "y": 115.76191520690918,
+        "wires": [
+            [
+                "50f674b2.47aacc"
+            ]
+        ]
+    },
+    {
+        "id": "48a645c5.c5cecc",
+        "type": "link out",
+        "z": "437f7724.3158f8",
+        "name": "TEMP",
+        "links": [
+            "51095a7e.fc8204"
+        ],
+        "x": 581.7790870666504,
+        "y": 302.9662895202637,
+        "wires": []
+    },
+    {
+        "id": "b77a6b4.1c89798",
+        "type": "exec",
+        "z": "437f7724.3158f8",
+        "command": "sudo shutdown -h now",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 1046.6412353515625,
+        "y": 423.02775955200195,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "acf27a6.407a688",
+        "type": "comment",
+        "z": "437f7724.3158f8",
+        "name": "Prerequisites",
+        "info": "Nodered Dashboard (optional, but nice)\n",
+        "x": 111.79235076904297,
+        "y": 70.41338348388672,
+        "wires": []
+    },
+    {
+        "id": "51904908.fcf988",
+        "type": "comment",
+        "z": "437f7724.3158f8",
+        "name": "Basic idea",
+        "info": "1. The timestamp node periodically starts the flow\n\n2. Then, to get the CPU temperature, the command \"vcgencmd measure_temp\" is run\n\n3. The temperature comes back as a string, which is parsed by a function node\n\n4. To determine whether the fan should turn on, a switch node compares to high and low values\n\n5. If the temperature is really high, then it will actually shutdown the Pi\n\n# Fancy stuff\n - There is a dashboard button to turn the fan on manually\n - Also, a display on the dashboard shows the temperature\n - The temperature is sent to the OLED flow",
+        "x": 264.6494598388672,
+        "y": 69.31551933288574,
+        "wires": []
+    },
+    {
+        "id": "b81072c1.18fef",
+        "type": "ui_group",
+        "z": "",
+        "name": "DISPLAY",
+        "tab": "7adac6cb.fcc808",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "7adac6cb.fcc808",
+        "type": "ui_tab",
+        "name": "Tab 1",
+        "icon": "dashboard",
+        "order": 1
+    }
+]
